@@ -1,0 +1,1478 @@
+import React, { useState, useEffect } from 'react';
+import {
+  BarChart3,
+  TrendingUp,
+  Cpu,
+  Building2,
+  Users,
+  ArrowRight,
+  CheckCircle2,
+  PieChart as PieChartIcon,
+  Sliders,
+  Sparkles,
+  ArrowUpRight,
+  Database,
+  Eye,
+  Activity,
+  LineChart,
+  Check,
+  ShieldCheck,
+  Globe,
+  Award,
+  Calendar,
+  Layers,
+  HelpCircle,
+  FileText,
+  Search,
+  BookOpen,
+  Camera,
+  AlertTriangle,
+  Lightbulb,
+  FileCheck,
+  Layers3,
+  ChevronRight,
+  Info,
+  MapPin,
+  Clock,
+  Zap,
+  Target,
+  FileCode,
+  Download,
+  Filter,
+  BarChart2
+} from 'lucide-react';
+
+const REVORA_APP_URL = "https://revintel-pranz.vercel.app/";
+
+const TEAM_MEMBERS = [
+  { name: "Pranav Zalte", role: "Chief Executive Officer — CEO", initials: "PZ" },
+  { name: "Tejal", role: "Chief Technology Officer — CTO", initials: "TJ" },
+  { name: "Atharva Gangurde", role: "Chief Financial Officer — CFO", initials: "AG" },
+  { name: "Omkar Sanap", role: "Chief Marketing Officer — CMO & Management", initials: "OS" },
+  { name: "Snehal Jadhav", role: "Technical Support", initials: "SJ" },
+  { name: "Jagruti Patil", role: "IT & System Support", initials: "JP" }
+];
+
+export default function App() {
+  const [currentPath, setCurrentPath] = useState('/');
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPath]);
+
+  const navigate = (path) => {
+    setCurrentPath(path);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#080F23] text-slate-100 font-sans selection:bg-[#19D8F5] selection:text-[#080F23] flex flex-col antialiased">
+      
+      {/* GLOBAL HEADER & TOP NAVIGATION */}
+      <header className="sticky top-0 z-50 bg-[#080F23]/95 backdrop-blur-md border-b border-slate-800/80 transition-all h-16 flex items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full h-full flex items-center justify-between gap-2.5">
+          
+          {/* Logo & Brand Identity */}
+          <button 
+            onClick={() => navigate('/')} 
+            className="flex items-center gap-2 group text-left focus:outline-none shrink-0"
+          >
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#19D8F5] via-[#22C7F5] to-[#3B82F6] p-[2px] shadow-lg shadow-[#19D8F5]/20 group-hover:shadow-[#19D8F5]/40 transition-all">
+              <div className="w-full h-full bg-[#080F23] rounded-[10px] flex items-center justify-center">
+                <BarChart3 className="w-4 h-4 text-[#19D8F5]" />
+              </div>
+            </div>
+            <div className="shrink-0">
+              <div className="flex items-center gap-1">
+                <span className="font-extrabold text-base sm:text-lg tracking-wider text-white group-hover:text-[#19D8F5] transition-colors">REVORA</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#19D8F5] animate-pulse"></span>
+              </div>
+              <span className="text-[7.5px] sm:text-[8.5px] tracking-widest text-slate-400 font-semibold block uppercase leading-none">
+                BY VENTURE7
+              </span>
+            </div>
+          </button>
+
+          {/* Single Row Horizontal Scrollable Navigation Links */}
+          <nav className="flex items-center gap-0.5 sm:gap-1.5 text-[11px] font-semibold uppercase tracking-wider overflow-x-auto py-1 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] shrink">
+            <button 
+              onClick={() => navigate('/')}
+              className={`px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap ${currentPath === '/' ? 'text-[#19D8F5] bg-slate-800/70 font-bold' : 'text-slate-300 hover:text-white hover:bg-slate-800/30'}`}
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => navigate('/product')}
+              className={`px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap ${currentPath === '/product' ? 'text-[#19D8F5] bg-slate-800/70 font-bold' : 'text-slate-300 hover:text-white hover:bg-slate-800/30'}`}
+            >
+              Product
+            </button>
+            <button 
+              onClick={() => navigate('/solutions')}
+              className={`px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap ${currentPath === '/solutions' ? 'text-[#19D8F5] bg-slate-800/70 font-bold' : 'text-slate-300 hover:text-white hover:bg-slate-800/30'}`}
+            >
+              Solutions
+            </button>
+            <button 
+              onClick={() => navigate('/features')}
+              className={`px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap ${currentPath === '/features' ? 'text-[#19D8F5] bg-slate-800/70 font-bold' : 'text-slate-300 hover:text-white hover:bg-slate-800/30'}`}
+            >
+              Features
+            </button>
+            <button 
+              onClick={() => navigate('/pricing')}
+              className={`px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap ${currentPath === '/pricing' ? 'text-[#19D8F5] bg-slate-800/70 font-bold' : 'text-slate-300 hover:text-white hover:bg-slate-800/30'}`}
+            >
+              Pricing
+            </button>
+            <button 
+              onClick={() => navigate('/blog')}
+              className={`px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap ${currentPath === '/blog' ? 'text-[#19D8F5] bg-slate-800/70 font-bold' : 'text-slate-300 hover:text-white hover:bg-slate-800/30'}`}
+            >
+              Blog
+            </button>
+            <button 
+              onClick={() => navigate('/investors')}
+              className={`px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap ${currentPath === '/investors' ? 'text-[#19D8F5] bg-slate-800/70 font-bold' : 'text-slate-300 hover:text-white hover:bg-slate-800/30'}`}
+            >
+              Investors
+            </button>
+            <button 
+              onClick={() => navigate('/about')}
+              className={`px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap ${currentPath === '/about' ? 'text-[#19D8F5] bg-slate-800/70 font-bold' : 'text-slate-300 hover:text-white hover:bg-slate-800/30'}`}
+            >
+              About
+            </button>
+            <button 
+              onClick={() => navigate('/contact')}
+              className={`px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap ${currentPath === '/contact' ? 'text-[#19D8F5] bg-slate-800/70 font-bold' : 'text-slate-300 hover:text-white hover:bg-slate-800/30'}`}
+            >
+              Contact
+            </button>
+          </nav>
+
+          {/* Action CTAs */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            <a 
+              href={REVORA_APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-block px-2.5 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-white transition-colors"
+            >
+              Login
+            </a>
+            <a 
+              href={REVORA_APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2.5 sm:px-3.5 py-1.5 text-[10px] sm:text-xs font-extrabold uppercase tracking-wider rounded-xl bg-gradient-to-r from-[#19D8F5] to-[#22C7F5] text-[#080F23] hover:shadow-lg hover:shadow-[#19D8F5]/25 hover:brightness-110 transition-all flex items-center gap-1 whitespace-nowrap"
+            >
+              Get Started
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+        </div>
+      </header>
+
+      {/* DYNAMIC PAGE ROUTING */}
+      <main className="flex-grow">
+        {currentPath === '/' && <HomePage navigate={navigate} />}
+        {currentPath === '/product' && <ProductPage navigate={navigate} />}
+        {currentPath === '/solutions' && <SolutionsPage navigate={navigate} />}
+        {currentPath === '/features' && <FeaturesPage navigate={navigate} />}
+        {currentPath === '/pricing' && <PricingPage navigate={navigate} />}
+        {currentPath === '/blog' && <ResearchAndInsightsPage navigate={navigate} />}
+        {currentPath === '/about' && <AboutPage navigate={navigate} />}
+        {currentPath === '/investors' && <InvestorsPage navigate={navigate} />}
+        {currentPath === '/contact' && <ContactPage />}
+      </main>
+
+      {/* GLOBAL FOOTER */}
+      <footer className="bg-[#050A18] border-t border-slate-800/80 pt-16 pb-12 text-slate-400">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+            
+            <div className="lg:col-span-2 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-[#19D8F5] p-[1.5px]">
+                  <div className="w-full h-full bg-[#080F23] rounded-[6px] flex items-center justify-center">
+                    <BarChart3 className="w-4 h-4 text-[#19D8F5]" />
+                  </div>
+                </div>
+                <span className="font-extrabold text-xl tracking-wider text-white">REVORA</span>
+              </div>
+              <p className="text-xs text-[#19D8F5] font-semibold tracking-wider uppercase">
+                AI-Powered Hotel Management & Revenue Intelligence
+              </p>
+              <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
+                Revora by Venture7 turns operational hotel data into intelligent dynamic pricing, demand forecasting, and profit clarity for independent and mid-sized hotels.
+              </p>
+              <div className="pt-2 text-xs text-slate-500">
+                Engineered & Developed by <span className="text-slate-300 font-semibold">VENTURE7</span>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">Product</h4>
+              <ul className="space-y-2.5 text-sm">
+                <li><button onClick={() => navigate('/product')} className="hover:text-[#19D8F5] transition-colors">Overview</button></li>
+                <li><button onClick={() => navigate('/features')} className="hover:text-[#19D8F5] transition-colors">Capabilities</button></li>
+                <li><button onClick={() => navigate('/solutions')} className="hover:text-[#19D8F5] transition-colors">Solutions</button></li>
+                <li><button onClick={() => navigate('/pricing')} className="hover:text-[#19D8F5] transition-colors">Pricing Plans</button></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">Research & Intelligence</h4>
+              <ul className="space-y-2.5 text-sm">
+                <li><button onClick={() => navigate('/blog')} className="hover:text-[#19D8F5] transition-colors">Market Research Report</button></li>
+                <li><button onClick={() => navigate('/solutions')} className="hover:text-[#19D8F5] transition-colors">Hotel Use Cases</button></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">Organization</h4>
+              <ul className="space-y-2.5 text-sm">
+                <li><button onClick={() => navigate('/about')} className="hover:text-[#19D8F5] transition-colors">About Venture7</button></li>
+                <li><button onClick={() => navigate('/investors')} className="hover:text-[#19D8F5] transition-colors">Investors</button></li>
+                <li><button onClick={() => navigate('/contact')} className="hover:text-[#19D8F5] transition-colors">Contact Us</button></li>
+                <li><a href={REVORA_APP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#19D8F5] transition-colors">Customer Login</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <div>
+              © 2026 <span className="text-slate-400 font-medium">Venture7</span>. All rights reserved. Revora is a proprietary platform of Venture7.
+            </div>
+            <div className="flex items-center gap-6">
+              <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
+              <span className="hover:text-slate-400 cursor-pointer">Terms & Conditions</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function HomePage({ navigate }) {
+  return (
+    <div className="space-y-12 sm:space-y-24 pb-12 sm:pb-20 overflow-x-hidden">
+      
+      {/* HERO SECTION */}
+      <section className="relative min-h-[70vh] sm:min-h-[85vh] flex items-center bg-[#080F23] overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=80" 
+            alt="Hotel Manager in Modern Property" 
+            className="w-full h-full object-cover object-center opacity-35 sm:opacity-40 filter brightness-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080F23]/80 via-[#080F23]/80 to-[#080F23] lg:bg-gradient-to-r lg:from-[#080F23] lg:via-[#080F23]/90 lg:to-transparent"></div>
+        </div>
+
+        <div 
+          className="hidden lg:block absolute inset-0 z-10 bg-[#080F23]"
+          style={{ clipPath: "polygon(0 0, 66% 0, 50% 100%, 0 100%)" }}
+        ></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-20 relative z-20 w-full">
+          <div className="max-w-2xl space-y-4 sm:space-y-6">
+            
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#0D162D]/90 border border-[#19D8F5]/40 text-[11px] sm:text-xs font-bold text-[#19D8F5] shadow-lg shadow-[#19D8F5]/10">
+              <span className="w-2 h-2 rounded-full bg-[#19D8F5] animate-ping"></span>
+              REVORA AI
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+              Turn Hotel Data Into <br className="hidden sm:inline" />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#19D8F5] via-[#22C7F5] to-[#3B82F6]">
+                Better Revenue Decisions.
+              </span>
+            </h1>
+
+            <p className="text-sm sm:text-lg text-slate-300 font-normal leading-relaxed max-w-xl">
+              AI-powered hotel management and revenue intelligence for small and mid-sized hotels.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 sm:pt-4">
+              <a 
+                href={REVORA_APP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-[#19D8F5] to-[#22C7F5] text-[#080F23] font-bold text-sm sm:text-base shadow-xl shadow-[#19D8F5]/20 hover:shadow-[#19D8F5]/35 hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+              >
+                Explore Revora →
+              </a>
+
+              <a 
+                href={REVORA_APP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#0D162D]/90 border border-slate-700 text-slate-200 font-semibold hover:border-[#19D8F5]/60 hover:text-white transition-all text-center text-sm sm:text-base"
+              >
+                Get Started
+              </a>
+            </div>
+
+            <p className="text-[11px] sm:text-xs text-slate-400 font-medium pt-1 sm:pt-2 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+              Built for hotels that are too complex for spreadsheets and too small for expensive enterprise systems.
+            </p>
+
+          </div>
+        </div>
+      </section>
+
+      {/* KPI METRICS STRIP */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <div className="text-xs font-bold uppercase tracking-widest text-[#19D8F5]">HOTEL INTELLIGENCE</div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+            Your Hotel Data Is More Valuable Than You Think.
+          </h2>
+          <p className="text-sm text-slate-300 leading-relaxed">
+            Revora brings hotel performance, revenue analytics and AI-powered insights together so hotel managers can make better-informed decisions.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-1 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Average Daily Rate</span>
+            <div className="text-2xl font-bold text-white">₹2,485</div>
+            <span className="text-[9px] font-bold text-[#19D8F5] bg-[#19D8F5]/10 px-2 py-0.5 rounded inline-block mt-1">DEMO DATA</span>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-1 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">RevPAR</span>
+            <div className="text-2xl font-bold text-white">₹1,923</div>
+            <span className="text-[9px] font-bold text-[#19D8F5] bg-[#19D8F5]/10 px-2 py-0.5 rounded inline-block mt-1">DEMO DATA</span>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-1 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Occupancy</span>
+            <div className="text-2xl font-bold text-[#19D8F5]">72.4%</div>
+            <span className="text-[9px] font-bold text-[#19D8F5] bg-[#19D8F5]/10 px-2 py-0.5 rounded inline-block mt-1">DEMO DATA</span>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-1 text-center">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Est. Revenue</span>
+            <div className="text-2xl font-bold text-emerald-400">₹8.42L</div>
+            <span className="text-[9px] font-bold text-[#19D8F5] bg-[#19D8F5]/10 px-2 py-0.5 rounded inline-block mt-1">DEMO DATA</span>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-1 text-center col-span-2 md:col-span-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Net Profitability</span>
+            <div className="text-2xl font-bold text-white">32.8%</div>
+            <span className="text-[9px] font-bold text-[#19D8F5] bg-[#19D8F5]/10 px-2 py-0.5 rounded inline-block mt-1">DEMO DATA</span>
+          </div>
+        </div>
+      </section>
+
+      {/* PROBLEM SECTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <div className="text-xs font-bold uppercase tracking-widest text-[#19D8F5]">THE PROBLEM</div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+            Running a Hotel Is More Than Filling Rooms.
+          </h2>
+          <p className="text-sm text-slate-400">
+            Many small and mid-sized hotels already use basic digital tools, but still need better revenue intelligence, demand insights, pricing intelligence, and profitability visibility.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3 hover:border-[#19D8F5]/40 transition-all">
+            <Database className="w-8 h-8 text-[#19D8F5]" />
+            <h3 className="text-lg font-bold text-white">Fragmented Data</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Hotel information can be spread across PMS, booking platforms, spreadsheets and other tools.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3 hover:border-[#19D8F5]/40 transition-all">
+            <Sliders className="w-8 h-8 text-[#19D8F5]" />
+            <h3 className="text-lg font-bold text-white">Fixed Pricing</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Hotels may still depend heavily on fixed or experience-based pricing instead of data-driven recommendations.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3 hover:border-[#19D8F5]/40 transition-all">
+            <Eye className="w-8 h-8 text-[#19D8F5]" />
+            <h3 className="text-lg font-bold text-white">Limited Demand Visibility</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Future occupancy and demand can be difficult to understand before it affects revenue.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3 hover:border-[#19D8F5]/40 transition-all">
+            <PieChartIcon className="w-8 h-8 text-[#19D8F5]" />
+            <h3 className="text-lg font-bold text-white">Limited Profit Visibility</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Revenue alone does not show the complete profitability picture.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#0D162D] via-[#111C3A] to-[#0D162D] border border-[#19D8F5]/30 text-center space-y-6 relative overflow-hidden shadow-2xl">
+          <div className="text-xs font-bold text-[#19D8F5] uppercase tracking-widest">START TODAY</div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white max-w-2xl mx-auto">
+            Ready to Understand Your Hotel Better?
+          </h2>
+          <p className="text-sm text-slate-300 max-w-xl mx-auto">
+            Explore Revora and see how hotel data, analytics, and AI can support better revenue decisions.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a 
+              href={REVORA_APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 rounded-xl bg-[#19D8F5] text-[#080F23] font-bold text-sm hover:brightness-110 transition-all flex items-center gap-2"
+            >
+              Start Using Revora →
+            </a>
+            <button 
+              onClick={() => navigate('/contact')}
+              className="px-8 py-3.5 rounded-xl bg-slate-800 text-white hover:bg-slate-700 font-semibold text-sm transition-all"
+            >
+              Contact Venture7 →
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
+
+function ProductPage({ navigate }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-xs font-bold uppercase tracking-widest text-[#19D8F5]">REVORA PLATFORM</div>
+        <h1 className="text-4xl font-extrabold text-white">The Practical Revenue Intelligence Platform</h1>
+        <p className="text-slate-300 text-base leading-relaxed">
+          Revora by Venture7 combines hotel performance tracking, booking analytics, and decision-support AI to help independent hoteliers thrive.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3">
+          <Activity className="w-8 h-8 text-[#19D8F5]" />
+          <h3 className="text-lg font-bold text-white">Hotel Performance Overview</h3>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            See room pickup, daily occupancy, ADR, RevPAR, and operational alerts in one single centralized dashboard view.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3">
+          <LineChart className="w-8 h-8 text-[#19D8F5]" />
+          <h3 className="text-lg font-bold text-white">Revenue Intelligence</h3>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            Understand revenue trends, room type performance, and channel pickup over daily, weekly, or monthly timelines.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3">
+          <Sparkles className="w-8 h-8 text-emerald-400" />
+          <h3 className="text-lg font-bold text-white">AI Revenue Analytics</h3>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            Automated recommendations highlight unpriced weekend surges, OTA margin risks, and underperforming room categories.
+          </p>
+        </div>
+      </div>
+
+      <div className="text-center pt-8">
+        <a 
+          href={REVORA_APP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#19D8F5] text-[#080F23] font-bold text-base hover:brightness-110"
+        >
+          Explore Revora Live Application <ArrowUpRight className="w-5 h-5" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function SolutionsPage({ navigate }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-xs font-bold uppercase tracking-widest text-[#19D8F5]">SOLUTIONS</div>
+        <h1 className="text-4xl font-extrabold text-white">Built Around the Way Hotels Actually Operate</h1>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+          <div className="text-xs font-bold text-[#19D8F5] uppercase">Small Hotels & Guesthouses</div>
+          <h2 className="text-2xl font-bold text-white">Simple & Accessible Intelligence</h2>
+          <p className="text-sm text-slate-300 leading-relaxed">
+            Affordable entry point to digitize room revenue without needing a dedicated revenue manager or complex setup.
+          </p>
+        </div>
+
+        <div className="p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+          <div className="text-xs font-bold text-[#19D8F5] uppercase">Mid-Level Hotels</div>
+          <h2 className="text-2xl font-bold text-white">Advanced Yield & Demand Control</h2>
+          <p className="text-sm text-slate-300 leading-relaxed">
+            Full dynamic revenue analytics, seasonal demand forecasting, and rate yield optimization.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FeaturesPage({ navigate }) {
+  const featuresList = [
+    { title: "Hotel Overview Dashboard", desc: "Single glass view of daily performance indicators, room pickup, and financial pulses." },
+    { title: "Revenue Intelligence", desc: "Granular channel and room-type revenue breakdown over flexible dates." },
+    { title: "Occupancy & Pickup Tracking", desc: "Monitor daily lead time pickup and spot booking pace anomalies early." },
+    { title: "AI Revenue Analytics", desc: "Algorithmic decision support flagging pricing opportunities and yield leakage." },
+    { title: "Pricing Intelligence", desc: "Data-driven room pricing suggestions adapted to current demand elasticity." },
+    { title: "Booking Analytics", desc: "Track cancellation rates, direct web vs OTA ratios, and guest stay length." }
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+      <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-xs font-bold uppercase tracking-widest text-[#19D8F5]">PRODUCT CAPABILITIES</div>
+        <h1 className="text-4xl font-extrabold text-white">Full Feature Capabilities</h1>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {featuresList.map((f, idx) => (
+          <div key={idx} className="p-6 rounded-xl bg-[#0D162D] border border-slate-800 flex items-start gap-4">
+            <div className="p-2.5 rounded-lg bg-[#19D8F5]/10 text-[#19D8F5] shrink-0 font-mono font-bold text-xs">
+              0{idx + 1}
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-white mb-1">{f.title}</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PricingPage({ navigate }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-xs font-bold uppercase tracking-widest text-[#19D8F5]">REVORA PRICING</div>
+        <h1 className="text-4xl font-extrabold text-white">Simple Pricing for Growing Hotels</h1>
+        <p className="text-sm text-slate-400">
+          Transparent plans designed for independent hoteliers.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        
+        {/* BASIC PLAN */}
+        <div className="p-8 rounded-2xl bg-[#0D162D] border border-slate-800 flex flex-col justify-between space-y-6">
+          <div className="space-y-4">
+            <div className="text-xs font-bold text-slate-400 uppercase">BASIC</div>
+            <div className="text-3xl font-extrabold text-white">₹1,599 <span className="text-xs font-normal text-slate-400">/ month</span></div>
+            <div className="inline-block px-2.5 py-1 rounded bg-slate-800 text-xs font-semibold text-[#19D8F5]">
+              FOR SMALL HOTELS & GUESTHOUSES
+            </div>
+            <p className="text-xs text-slate-400">Essential performance tracking and analytics for small properties.</p>
+
+            <ul className="space-y-2.5 text-xs text-slate-300 pt-2">
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Hotel Performance Dashboard</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Occupancy Tracking</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Revenue Tracking</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> ADR & RevPAR Monitoring</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Booking Analytics</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Basic Pricing Insights</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Basic Reports</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Hotel Performance Overview</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> 24/7 Customer Support</li>
+            </ul>
+          </div>
+
+          <a href={REVORA_APP_URL} target="_blank" rel="noopener noreferrer" className="block text-center py-3 rounded-xl bg-slate-800 text-white text-xs font-bold hover:bg-slate-700 transition-all">
+            Get Started →
+          </a>
+        </div>
+
+        {/* PRO PLAN */}
+        <div className="p-8 rounded-2xl bg-[#0D162D] border-2 border-[#19D8F5] flex flex-col justify-between space-y-6 relative shadow-2xl shadow-[#19D8F5]/10">
+          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#19D8F5] text-[#080F23] font-extrabold text-[10px] uppercase tracking-wider">
+            MOST POPULAR
+          </div>
+
+          <div className="space-y-4">
+            <div className="text-xs font-bold text-[#19D8F5] uppercase">PRO</div>
+            <div className="text-3xl font-extrabold text-white">₹3,500 <span className="text-xs font-normal text-slate-400">/ month</span></div>
+            <div className="inline-block px-2.5 py-1 rounded bg-[#19D8F5]/10 text-xs font-semibold text-[#19D8F5]">
+              FOR MID-LEVEL HOTELS
+            </div>
+            <p className="text-xs text-slate-300">Complete AI-powered revenue intelligence and demand forecasting.</p>
+
+            <ul className="space-y-2.5 text-xs text-slate-200 pt-2">
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> Everything in Basic</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> AI Revenue Analytics</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> AI-Powered Revenue Insights</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> Demand Forecasting</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> Pricing Intelligence</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> Advanced Booking Analytics</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> Profitability Insights</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> Revenue Simulation</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> Advanced Reports</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-[#19D8F5]" /> 24/7 Customer Support</li>
+            </ul>
+          </div>
+
+          <a href={REVORA_APP_URL} target="_blank" rel="noopener noreferrer" className="block text-center py-3 rounded-xl bg-gradient-to-r from-[#19D8F5] to-[#22C7F5] text-[#080F23] text-xs font-bold hover:brightness-110 transition-all">
+            Get Pro →
+          </a>
+        </div>
+
+        {/* CUSTOM PLAN */}
+        <div className="p-8 rounded-2xl bg-[#0D162D] border border-slate-800 flex flex-col justify-between space-y-6">
+          <div className="space-y-4">
+            <div className="text-xs font-bold text-slate-400 uppercase">CUSTOM</div>
+            <div className="text-3xl font-extrabold text-white">Flexible Pricing</div>
+            <div className="inline-block px-2.5 py-1 rounded bg-slate-800 text-xs font-semibold text-slate-300">
+              FOR HOTELS WITH SPECIFIC REQUIREMENTS
+            </div>
+            <p className="text-xs text-slate-400">Tailored solutions for complex operations or multi-property management.</p>
+
+            <ul className="space-y-2.5 text-xs text-slate-300 pt-2">
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Everything in Pro</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Custom Requirements</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Custom Analytics</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Custom Integrations</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Multiple-Property Support</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Customized Reports</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> Flexible Feature Configuration</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#19D8F5]" /> 24/7 Customer Support</li>
+            </ul>
+          </div>
+
+          <button onClick={() => navigate('/contact')} className="w-full text-center py-3 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 text-xs font-bold transition-all">
+            Contact Us →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ResearchAndInsightsPage({ navigate }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-16 sm:space-y-24">
+      
+      {/* INSTITUTIONAL REPORT COVER HEADER */}
+      <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#0D162D] via-[#080F23] to-[#0D162D] border border-[#19D8F5]/30 shadow-2xl relative overflow-hidden space-y-6">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#19D8F5]/5 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-6">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-[#19D8F5]/10 border border-[#19D8F5]/30 text-[#19D8F5]">
+              <BookOpen className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="text-xs font-mono font-bold text-[#19D8F5] uppercase tracking-widest block">REVORA RESEARCH & MARKET INTELLIGENCE</span>
+              <span className="text-[11px] text-slate-400">Published by Venture7 Research Group</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 bg-[#080F23] px-3 py-1.5 rounded-full border border-slate-800">
+            <Globe className="w-3.5 h-3.5 text-[#19D8F5]" />
+            <span>INDIA MARKET REPORT | 2026</span>
+          </div>
+        </div>
+
+        <div className="space-y-4 max-w-4xl">
+          <h1 className="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight">
+            REVORA HOTEL TECHNOLOGY <br className="hidden sm:block" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#19D8F5] via-[#22C7F5] to-[#3B82F6]">
+              MARKET RESEARCH REPORT
+            </span>
+          </h1>
+          <p className="text-base sm:text-xl text-slate-300 font-medium leading-relaxed">
+            Technology Adoption, Revenue Management Practices & Digital Opportunity in Small and Mid-Sized Independent Hotels
+          </p>
+        </div>
+
+        {/* Executive Quick Stats Strip */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-slate-800/80">
+          <div className="p-4 rounded-xl bg-[#080F23]/80 border border-slate-800/80 space-y-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Small Hotel PMS Deficit</span>
+            <div className="text-2xl font-bold text-white">48%</div>
+            <span className="text-[10px] text-[#19D8F5] block font-medium">Lack Digital PMS (Govt 2023)</span>
+          </div>
+          <div className="p-4 rounded-xl bg-[#080F23]/80 border border-slate-800/80 space-y-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Hotelier Tech Priority</span>
+            <div className="text-2xl font-bold text-white">86%</div>
+            <span className="text-[10px] text-[#19D8F5] block font-medium">Rank PMS Top Priority System</span>
+          </div>
+          <div className="p-4 rounded-xl bg-[#080F23]/80 border border-slate-800/80 space-y-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">OTA Revenue Drain</span>
+            <div className="text-2xl font-bold text-amber-400">15%–30%</div>
+            <span className="text-[10px] text-slate-400 block font-medium">Commission Costs Per Booking</span>
+          </div>
+          <div className="p-4 rounded-xl bg-[#080F23]/80 border border-slate-800/80 space-y-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Small Hotel AI Usage</span>
+            <div className="text-2xl font-bold text-rose-400">~0%</div>
+            <span className="text-[10px] text-slate-400 block font-medium">Qualitative Market Observation</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 1. EXECUTIVE SUMMARY */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <FileText className="w-5 h-5 text-[#19D8F5]" />
+          <h2 className="text-2xl font-bold text-white uppercase tracking-wider">1. Executive Summary</h2>
+        </div>
+
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6 text-slate-300 text-xs sm:text-sm leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Target className="w-4 h-4 text-[#19D8F5]" /> Research Objective
+              </h3>
+              <p>
+                This study evaluates technology adoption, distribution reliance, pricing practices, and revenue management mechanisms across independent small and mid-sized hotels in India.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-400" /> Core Market Problem
+              </h3>
+              <p>
+                While basic front-desk tools are gradually spreading, small and mid-sized independent hotels operate with fragmented data silos, fixed non-yield room tariffs, high OTA commission friction, and zero predictive analytics.
+              </p>
+            </div>
+          </div>
+
+          <div className="p-5 rounded-xl bg-[#080F23] border border-slate-800/80 space-y-3">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider text-[#19D8F5]">
+              Key Findings & Industry Gap
+            </h3>
+            <ul className="space-y-2 text-xs text-slate-300 list-disc list-inside">
+              <li><strong className="text-white">PMS Fragmented Penetration:</strong> Roughly 48% of small budget properties lack cloud PMS infrastructure, relying instead on paper registers or basic spreadsheets.</li>
+              <li><strong className="text-white">Fixed Pricing Vulnerability:</strong> Budget properties overwhelmingly use static room rates regardless of surging weekend demand or local events.</li>
+              <li><strong className="text-white">High OTA Slippage:</strong> Heavy reliance on OTAs (MakeMyTrip/Goibibo charging 15-30% commissions) severely drains room GOPPAR.</li>
+              <li><strong className="text-white">The Intelligence Gap:</strong> Enterprise chains are adopting AI yield management (60% investment plan), while independent budget properties remain at 0% AI adoption.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. RESEARCH METHODOLOGY */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <Sliders className="w-5 h-5 text-[#19D8F5]" />
+          <h2 className="text-2xl font-bold text-white uppercase tracking-wider">2. Research Methodology</h2>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-3 text-center">
+            {[
+              { step: "01", name: "Secondary Research", desc: "Govt surveys & industry literature" },
+              { step: "02", name: "Competitor Audits", desc: "Enterprise RMS vs PMS feature analysis" },
+              { step: "03", name: "Primary Survey", desc: "Active regional hotel polling framework" },
+              { step: "04", name: "Field Research", desc: "On-site property audits (Nashik, MH)" },
+              { step: "05", name: "Data Synthesis", desc: "Observation vs statistical tagging" },
+              { step: "06", name: "Market Gap Mapping", desc: "Revora decision layer prototype" }
+            ].map((m, idx) => (
+              <div key={idx} className="p-4 rounded-xl bg-[#080F23] border border-slate-800/80 space-y-2">
+                <span className="text-xs font-mono font-bold text-[#19D8F5]">{m.step}</span>
+                <div className="text-xs font-bold text-white">{m.name}</div>
+                <div className="text-[10px] text-slate-400">{m.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800/60 text-xs space-y-1">
+              <span className="font-bold text-white block">Secondary Data Sources</span>
+              <p className="text-slate-400">Ministry of Tourism (2023), Kshirsagar et al. (2026), and HVS India Hospitality Tech Reports.</p>
+            </div>
+            <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800/60 text-xs space-y-1">
+              <span className="font-bold text-white block">Primary Data Framework</span>
+              <p className="text-slate-400">Structured polling of independent property owners regarding software usage and pricing strategies.</p>
+            </div>
+            <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800/60 text-xs space-y-1">
+              <span className="font-bold text-white block">Field Audits</span>
+              <p className="text-slate-400">Direct on-site property visits, front-desk register reviews, and owner interviews in Tier-2/3 hospitality hubs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. HOTEL TECHNOLOGY LANDSCAPE (VISUAL BAR CHARTS) */}
+      <section className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="flex items-center gap-2">
+            <BarChart2 className="w-5 h-5 text-[#19D8F5]" />
+            <h2 className="text-2xl font-bold text-white uppercase tracking-wider">3. Hotel Technology Adoption</h2>
+          </div>
+          <span className="px-3 py-1 rounded-full bg-[#080F23] border border-slate-700 text-[#19D8F5] text-[10px] font-mono uppercase">
+            Qualitative Research Synthesis + Published Benchmarks
+          </span>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6">
+          <p className="text-xs text-slate-400">
+            Horizontal visualization of technology adoption levels across small and mid-sized independent properties in India.
+          </p>
+
+          <div className="space-y-5 text-xs">
+            
+            {/* ROW 1: PMS */}
+            <div className="space-y-1.5">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-white">PMS (Property Management Systems)</span>
+                <span className="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono font-bold text-[10px]">MEDIUM ADOPTION</span>
+              </div>
+              <div className="w-full bg-[#080F23] h-3 rounded-full overflow-hidden border border-slate-800">
+                <div className="bg-gradient-to-r from-[#19D8F5] to-blue-500 h-full rounded-full" style={{ width: '52%' }}></div>
+              </div>
+              <div className="flex justify-between text-[11px] text-slate-400 pt-0.5">
+                <span>Key Finding: ~48% of small hotels lack advanced digital PMS infrastructure (Govt survey 2023).</span>
+                <span>Impact: High manual ledger dependency</span>
+              </div>
+            </div>
+
+            {/* ROW 2: Booking Systems */}
+            <div className="space-y-1.5">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-white">Direct Booking Engines</span>
+                <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-[10px]">LOW ADOPTION</span>
+              </div>
+              <div className="w-full bg-[#080F23] h-3 rounded-full overflow-hidden border border-slate-800">
+                <div className="bg-gradient-to-r from-amber-500 to-amber-400 h-full rounded-full" style={{ width: '35%' }}></div>
+              </div>
+              <div className="flex justify-between text-[11px] text-slate-400 pt-0.5">
+                <span>Key Finding: Direct website booking capability is rare in sub-30 room properties.</span>
+                <span>Impact: Heavy OTA commission dependency</span>
+              </div>
+            </div>
+
+            {/* ROW 3: Channel Managers */}
+            <div className="space-y-1.5">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-white">Channel Managers</span>
+                <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-[10px]">LOW ADOPTION</span>
+              </div>
+              <div className="w-full bg-[#080F23] h-3 rounded-full overflow-hidden border border-slate-800">
+                <div className="bg-gradient-to-r from-amber-500 to-amber-400 h-full rounded-full" style={{ width: '28%' }}></div>
+              </div>
+              <div className="flex justify-between text-[11px] text-slate-400 pt-0.5">
+                <span>Key Finding: OTAs updated manually across separate extranets in budget hotels.</span>
+                <span>Impact: Double-booking and overbooking risks</span>
+              </div>
+            </div>
+
+            {/* ROW 4: Revenue Management Systems */}
+            <div className="space-y-1.5">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-white">Revenue Management Systems (RMS)</span>
+                <span className="px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono font-bold text-[10px]">RARE ADOPTION</span>
+              </div>
+              <div className="w-full bg-[#080F23] h-3 rounded-full overflow-hidden border border-slate-800">
+                <div className="bg-gradient-to-r from-rose-500 to-rose-400 h-full rounded-full" style={{ width: '12%' }}></div>
+              </div>
+              <div className="flex justify-between text-[11px] text-slate-400 pt-0.5">
+                <span>Key Finding: Static tariffs prevail; dynamic yield management absent in budget segment.</span>
+                <span>Impact: Unpriced weekend surge revenue loss</span>
+              </div>
+            </div>
+
+            {/* ROW 5: AI Revenue Management */}
+            <div className="space-y-1.5">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-white">AI-Powered Revenue Analytics</span>
+                <span className="px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono font-bold text-[10px]">RARE ADOPTION (~0%)</span>
+              </div>
+              <div className="w-full bg-[#080F23] h-3 rounded-full overflow-hidden border border-slate-800">
+                <div className="bg-gradient-to-r from-rose-600 to-rose-500 h-full rounded-full" style={{ width: '5%' }}></div>
+              </div>
+              <div className="flex justify-between text-[11px] text-slate-400 pt-0.5">
+                <span>Key Finding: 0% adoption in small independents despite 60% intent in large chains.</span>
+                <span>Impact: Competitive gap vs enterprise chains</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 4. ADOPTION MATRIX BY HOTEL SIZE */}
+      <section className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="flex items-center gap-2">
+            <Layers3 className="w-5 h-5 text-[#19D8F5]" />
+            <h2 className="text-2xl font-bold text-white uppercase tracking-wider">4. Adoption Matrix by Hotel Size</h2>
+          </div>
+          <span className="px-3 py-1 rounded-full bg-[#080F23] border border-slate-700 text-[#19D8F5] text-[10px] font-mono uppercase">
+            Qualitative Market Research Synthesis — Not a Statistical Survey
+          </span>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 overflow-x-auto">
+          <table className="w-full min-w-[750px] text-left border-collapse">
+            <thead>
+              <tr className="border-b border-slate-800 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <th className="py-3.5 px-3">Property Scale</th>
+                <th className="py-3.5 px-3">PMS</th>
+                <th className="py-3.5 px-3">Booking Engine</th>
+                <th className="py-3.5 px-3">Channel Mgr</th>
+                <th className="py-3.5 px-3">Rev. Mgmt (RMS)</th>
+                <th className="py-3.5 px-3">Pricing Analytics</th>
+                <th className="py-3.5 px-3">AI Analytics</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-800/60 text-xs font-medium">
+              {[
+                { size: "Under 30 Rooms", pms: "LOW", be: "RARE", cm: "RARE", rm: "RARE", pa: "RARE", ai: "RARE" },
+                { size: "30–50 Rooms", pms: "MEDIUM", be: "LOW", cm: "LOW", rm: "RARE", pa: "RARE", ai: "RARE" },
+                { size: "50–100 Rooms", pms: "HIGH", be: "MEDIUM", cm: "MEDIUM", rm: "LOW", pa: "LOW", ai: "RARE" },
+                { size: "100–150 Rooms", pms: "HIGH", be: "HIGH", cm: "HIGH", rm: "MEDIUM", pa: "MEDIUM", ai: "LOW" },
+                { size: "150+ Rooms", pms: "HIGH", be: "HIGH", cm: "HIGH", rm: "HIGH", pa: "HIGH", ai: "EMERGING" }
+              ].map((row, idx) => {
+                const getBadge = (val) => {
+                  if (val === 'HIGH') return <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span>;
+                  if (val === 'MEDIUM') return <span className="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold">MEDIUM</span>;
+                  if (val === 'LOW') return <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold">LOW</span>;
+                  if (val === 'EMERGING') return <span className="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/30 text-purple-300 text-[10px] font-bold">EMERGING</span>;
+                  return <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span>;
+                };
+
+                return (
+                  <tr key={idx} className="hover:bg-[#080F23]/50 transition-colors">
+                    <td className="py-3.5 px-3 font-mono font-bold text-[#19D8F5]">{row.size}</td>
+                    <td className="py-3.5 px-3">{getBadge(row.pms)}</td>
+                    <td className="py-3.5 px-3">{getBadge(row.be)}</td>
+                    <td className="py-3.5 px-3">{getBadge(row.cm)}</td>
+                    <td className="py-3.5 px-3">{getBadge(row.rm)}</td>
+                    <td className="py-3.5 px-3">{getBadge(row.pa)}</td>
+                    <td className="py-3.5 px-3">{getBadge(row.ai)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* 5. MARKET PROBLEM IDENTIFIED */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <AlertTriangle className="w-5 h-5 text-amber-400" />
+          <h2 className="text-2xl font-bold text-white uppercase tracking-wider">5. Market Problem Identified</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { id: "01", title: "Manual Operations", obs: "Physical registers & basic spreadsheets.", impact: "High error rates & data loss." },
+            { id: "02", title: "Fragmented Data", obs: "Siloed guest, booking, & billing records.", impact: "No unified revenue overview." },
+            { id: "03", title: "Fixed Pricing Practices", obs: "Static seasonal room rates.", impact: "Uncaptured weekend yield." },
+            { id: "04", title: "Limited Analytics", obs: "No tracking of ADR elasticity or RevPAR.", impact: "Intuition-based rate decisions." },
+            { id: "05", title: "Weak Demand Forecasting", obs: "Inability to predict pickup pace.", impact: "Last-minute panic rate slashes." },
+            { id: "06", title: "OTA Margin Squeeze", obs: "15%–30% OTA commission rates.", impact: "Net profit heavily eroded." },
+            { id: "07", title: "Low AI Tool Adoption", obs: "Zero decision support or alerts.", impact: "Operational competitive disadvantage." }
+          ].map((prob, idx) => (
+            <div key={idx} className="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-mono text-[#19D8F5] font-bold block mb-1">{prob.id} — OBSERVATION</span>
+                <h3 className="text-sm font-bold text-white mb-1.5">{prob.title}</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">{prob.obs}</p>
+              </div>
+              <div className="pt-2 border-t border-slate-800/80">
+                <span className="text-[10px] font-mono uppercase text-slate-400 block mb-0.5">Business Impact</span>
+                <p className="text-[11px] text-amber-400/90 font-medium">{prob.impact}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 6. MARKET GAP DIAGRAM */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <Layers className="w-5 h-5 text-[#19D8F5]" />
+          <h2 className="text-2xl font-bold text-white uppercase tracking-wider">6. Market Opportunity & Technology Gap</h2>
+        </div>
+
+        <div className="p-8 rounded-2xl bg-[#0D162D] border border-[#19D8F5]/30 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-center text-center">
+            <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 text-xs font-bold text-white">BASIC / MANUAL HOTEL SYSTEMS</div>
+            <span className="text-[#19D8F5] font-bold text-xs">→ GAP →</span>
+            <div className="p-4 rounded-xl bg-gradient-to-r from-[#19D8F5]/20 to-[#22C7F5]/20 border border-[#19D8F5] text-xs font-bold text-white shadow-lg shadow-[#19D8F5]/10">
+              LIMITED REVENUE INTELLIGENCE
+            </div>
+            <span className="text-[#19D8F5] font-bold text-xs">→ IMPACT →</span>
+            <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 text-xs font-bold text-white">DIFFICULT DATA-DRIVEN DECISIONS</div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#080F23]/80 border border-slate-800 text-xs text-slate-300 leading-relaxed text-center max-w-3xl mx-auto space-y-1">
+            <span className="text-[#19D8F5] font-bold uppercase tracking-wider block">Opportunity Identified From Research:</span>
+            <p>
+              A distinct technology gap exists between basic front-desk tools and enterprise revenue management systems. Revora was conceptualized to fill this exact intelligence layer for small and mid-sized independent hotels.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. PRIMARY SURVEY FINDINGS (ACTIVE FRAMEWORK) */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <BarChart3 className="w-5 h-5 text-[#19D8F5]" />
+          <h2 className="text-2xl font-bold text-white uppercase tracking-wider">7. Primary Survey Framework</h2>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 text-center space-y-1">
+              <span className="text-[10px] font-mono text-slate-400 uppercase">Survey Metric</span>
+              <div className="text-xs font-bold text-white">Hotel Sample Size</div>
+              <span className="text-[9px] text-[#19D8F5] bg-[#19D8F5]/10 px-2 py-0.5 rounded inline-block">Active Collection</span>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 text-center space-y-1">
+              <span className="text-[10px] font-mono text-slate-400 uppercase">System Mix</span>
+              <div className="text-xs font-bold text-white">PMS vs Manual Register</div>
+              <span className="text-[9px] text-[#19D8F5] bg-[#19D8F5]/10 px-2 py-0.5 rounded inline-block">Active Collection</span>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 text-center space-y-1">
+              <span className="text-[10px] font-mono text-slate-400 uppercase">Pricing Method</span>
+              <div className="text-xs font-bold text-white">Fixed vs Dynamic Tariffs</div>
+              <span className="text-[9px] text-[#19D8F5] bg-[#19D8F5]/10 px-2 py-0.5 rounded inline-block">Active Collection</span>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 text-center space-y-1">
+              <span className="text-[10px] font-mono text-slate-400 uppercase">AI Readiness</span>
+              <div className="text-xs font-bold text-white">Interest in Dynamic Guidance</div>
+              <span className="text-[9px] text-[#19D8F5] bg-[#19D8F5]/10 px-2 py-0.5 rounded inline-block">Active Collection</span>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 text-center text-xs text-slate-400 flex items-center justify-center gap-2">
+            <Info className="w-4 h-4 text-[#19D8F5] shrink-0" />
+            <span>PRIMARY SURVEY DATA — TO BE INSERTED UPON REGIONAL POLLING COMPLETION.</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. SECONDARY RESEARCH FINDINGS (LITERATURE CITATIONS) */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <BookOpen className="w-5 h-5 text-[#19D8F5]" />
+          <h2 className="text-2xl font-bold text-white uppercase tracking-wider">8. Secondary Research Literature</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            {
+              title: "PMS Adoption Deficit in Small Hotels",
+              finding: "A Ministry of Tourism-linked survey (2023) indicates ~48% of budget/independent hotels lack infrastructure for digital PMS.",
+              source: "Ministry of Tourism Survey (2023)",
+              implication: "Revora acts as a lightweight intelligence layer requiring no complex server setup."
+            },
+            {
+              title: "OTA Distribution Fee Burden",
+              finding: "OTAs (MakeMyTrip/Goibibo) hold >60% online booking share in India, charging 15-30% commissions per transaction.",
+              source: "Hospitality Distribution Benchmarks (2023-2025)",
+              implication: "Revora highlights net GOPPAR and channel commission leakage to promote direct bookings."
+            },
+            {
+              title: "Static Tariff Prevalence in Budget Sector",
+              finding: "Kshirsagar et al. (2026) studied budget hotels in Maharashtra, observing consistent use of fixed room rates across seasons.",
+              source: "Kshirsagar et al. Study (2026)",
+              implication: "Revora introduces algorithmic yield guidance to adjust rates dynamically."
+            },
+            {
+              title: "AI Adoption Readiness Gap",
+              finding: "HVS India reports 60% of large hotel chains plan AI investments over 2 years, while small independent properties remain at ~0%.",
+              source: "HVS India Hospitality Tech Study (2025/2026)",
+              implication: "Revora democratizes AI decision support specifically for independent hoteliers."
+            }
+          ].map((card, idx) => (
+            <div key={idx} className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+              <h3 className="text-base font-bold text-white">{card.title}</h3>
+              <div className="p-3.5 rounded-xl bg-[#080F23] border border-slate-800/80 space-y-1">
+                <span className="text-[10px] uppercase font-bold text-[#19D8F5]">RESEARCH FINDING</span>
+                <p className="text-xs text-slate-300 leading-relaxed">{card.finding}</p>
+              </div>
+              <div className="p-3 rounded-xl bg-[#19D8F5]/5 border border-[#19D8F5]/20 space-y-1">
+                <span className="text-[10px] uppercase font-bold text-[#19D8F5]">REVORA IMPLICATION</span>
+                <p className="text-xs text-slate-200 leading-relaxed">{card.implication}</p>
+              </div>
+              <div className="text-[10px] font-mono text-slate-400 pt-1">
+                Source: {card.source}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 9. FIELD RESEARCH — NASHIK (FEATURED FIGURE & PHOTO) */}
+      <section className="p-6 sm:p-10 rounded-3xl bg-[#0D162D] border border-[#19D8F5]/40 shadow-2xl space-y-6 relative overflow-hidden">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#19D8F5]/10 border border-[#19D8F5]/40 text-xs font-mono font-bold uppercase tracking-wider text-[#19D8F5]">
+            <Camera className="w-3.5 h-3.5" /> FIELD RESEARCH · NASHIK · AUGUST 2026
+          </div>
+          <span className="text-xs font-semibold text-slate-400">On-Ground Field Audit Documentation</span>
+        </div>
+
+        <div className="space-y-2">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+            Field Research: Understanding Hotels on the Ground
+          </h2>
+        </div>
+
+        {/* UPLOADED PHOTO DISPLAY */}
+        <div className="space-y-3">
+          <div className="rounded-2xl overflow-hidden border border-slate-700 bg-slate-900 shadow-xl max-h-[600px] flex items-center justify-center">
+            <img 
+              src="WhatsApp Image 2026-08-21 at 9.24.01 PM.jpeg" 
+              alt="Revora Field Research Team at Hotel Highway Palace, Nashik, Maharashtra" 
+              className="w-full h-auto object-cover max-h-[600px]"
+            />
+          </div>
+          <p className="text-xs sm:text-sm text-slate-300 italic border-l-2 border-[#19D8F5] pl-3 py-1 bg-[#080F23]/80 rounded-r-lg">
+            “On-ground field research in Nashik, Maharashtra, as our team explored hotel operations and spoke with local hospitality businesses to better understand their challenges and technology needs.”
+          </p>
+        </div>
+
+        {/* NARRATIVE & RESEARCH OBJECTIVES */}
+        <div className="space-y-6 pt-2">
+          <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
+            Research is not limited to online data. Our team conducted on-ground research to understand how local hotels operate, what systems they currently use, and where technology gaps exist.
+          </p>
+
+          <div className="p-5 sm:p-6 rounded-2xl bg-[#080F23] border border-slate-800 space-y-4">
+            <h3 className="text-xs sm:text-sm font-bold text-[#19D8F5] uppercase tracking-wider flex items-center gap-2">
+              <Search className="w-4 h-4 text-[#19D8F5]" /> WHAT WE WERE LOOKING TO UNDERSTAND
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-300">
+              <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0D162D] border border-slate-800">
+                <CheckCircle2 className="w-4 h-4 text-[#19D8F5] shrink-0" />
+                <span>Current hotel technology usage</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0D162D] border border-slate-800">
+                <CheckCircle2 className="w-4 h-4 text-[#19D8F5] shrink-0" />
+                <span>Revenue and pricing practices</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0D162D] border border-slate-800">
+                <CheckCircle2 className="w-4 h-4 text-[#19D8F5] shrink-0" />
+                <span>Operational challenges</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0D162D] border border-slate-800">
+                <CheckCircle2 className="w-4 h-4 text-[#19D8F5] shrink-0" />
+                <span>Use of PMS and other hotel systems</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0D162D] border border-slate-800">
+                <CheckCircle2 className="w-4 h-4 text-[#19D8F5] shrink-0" />
+                <span>Data and analytics requirements</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0D162D] border border-slate-800">
+                <CheckCircle2 className="w-4 h-4 text-[#19D8F5] shrink-0" />
+                <span>Interest in AI-powered revenue intelligence</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 10. KEY RESEARCH FINDINGS */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <Lightbulb className="w-5 h-5 text-[#19D8F5]" />
+          <h2 className="text-2xl font-bold text-white uppercase tracking-wider">10. Key Research Findings</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[
+            {
+              id: "01",
+              title: "Limited Advanced Analytics Access",
+              desc: "Advanced revenue and pricing analytics appear largely unmonitored in independent small/mid properties due to cost and technical complexity.",
+              source: "Secondary Literature & Field Audits"
+            },
+            {
+              id: "02",
+              title: "Prevalence of Spreadsheet Accounting",
+              desc: "Manual registers and standalone spreadsheets remain standard operational tools across small budget hotels.",
+              source: "Kshirsagar et al. (2026) & Field Studies"
+            },
+            {
+              id: "03",
+              title: "Static Tariff Loss During Demand Surges",
+              desc: "Budget hoteliers maintain fixed seasonal rates, leaving room yield uncaptured during weekend and local event surges.",
+              source: "Regional Hotel Study (2026)"
+            },
+            {
+              id: "04",
+              title: "OTA Distribution Fee Erosion",
+              desc: "Commission fees of 15%–30% per booking severely reduce net operating margins without direct booking offsets.",
+              source: "Hospitality Distribution Benchmarks"
+            },
+            {
+              id: "05",
+              title: "Unrealized AI Intelligence Opportunity",
+              desc: "While 60% of enterprise chains plan AI investments, small independent properties currently sit at ~0% adoption.",
+              source: "HVS India Hospitality Tech Report"
+            },
+            {
+              id: "06",
+              title: "High Hotelier Intent for Software Control",
+              desc: "86% of adopting hoteliers single out front-desk and performance visibility as their highest priority capability.",
+              source: "Industry Survey Benchmark"
+            }
+          ].map((f, idx) => (
+            <div key={idx} className="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3 flex flex-col justify-between">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold text-[#19D8F5]">FINDING {f.id}</span>
+                  <span className="text-[10px] font-mono text-slate-500">{f.source}</span>
+                </div>
+                <h3 className="text-sm font-bold text-white">{f.title}</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 11. MARKET OPPORTUNITY FRAMEWORK */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <Target className="w-5 h-5 text-[#19D8F5]" />
+          <h2 className="text-2xl font-bold text-white uppercase tracking-wider">11. Market Opportunity Identified</h2>
+        </div>
+
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+            <div className="p-5 rounded-xl bg-[#080F23] border border-slate-800 space-y-2">
+              <span className="text-[10px] font-mono uppercase text-[#19D8F5] font-bold">CURRENT STATE</span>
+              <h3 className="text-sm font-bold text-white">Basic Systems & Manual Processes</h3>
+              <p className="text-xs text-slate-400">Paper ledgers, fixed tariffs, manual OTA extranets.</p>
+            </div>
+
+            <div className="p-5 rounded-xl bg-[#080F23] border border-[#19D8F5]/30 space-y-2">
+              <span className="text-[10px] font-mono uppercase text-[#19D8F5] font-bold">THE GAP</span>
+              <h3 className="text-sm font-bold text-white">Revenue Intelligence & Yield Control</h3>
+              <p className="text-xs text-slate-300">Lack of demand forecasting, RevPAR tracking, and profit visibility.</p>
+            </div>
+
+            <div className="p-5 rounded-xl bg-gradient-to-r from-[#19D8F5]/10 to-[#22C7F5]/10 border border-[#19D8F5] space-y-2">
+              <span className="text-[10px] font-mono uppercase text-[#19D8F5] font-bold">REVORA HYPOTHESIS</span>
+              <h3 className="text-sm font-bold text-white">Practical AI Decision Support</h3>
+              <p className="text-xs text-slate-200">Affordable, non-intrusive revenue analytics layer for small/mid hotels.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 12. FROM RESEARCH TO REVORA (MAPPING) */}
+      <section className="p-8 rounded-3xl bg-[#0D162D] border border-[#19D8F5]/30 space-y-6 text-center">
+        <div className="text-xs font-bold text-[#19D8F5] uppercase tracking-widest">PRODUCT MAPPING</div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white">12. From Research to Product</h2>
+
+        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Ground-truth research directly shaped Revora's core product capabilities — providing actionable revenue guidance without requiring enterprise infrastructure.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-left max-w-4xl mx-auto pt-2">
+          <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span className="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div className="text-xs font-bold text-white">Limited Revenue Visibility</div>
+            <span className="text-[10px] text-slate-400 block pt-1">→ Revora Performance Dashboard</span>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span className="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div className="text-xs font-bold text-white">Fixed Seasonal Tariffs</div>
+            <span className="text-[10px] text-slate-400 block pt-1">→ Revora Pricing Intelligence</span>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span className="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div className="text-xs font-bold text-white">Unpredictable Lead Times</div>
+            <span className="text-[10px] text-slate-400 block pt-1">→ Revora Demand Forecasting</span>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span className="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div className="text-xs font-bold text-white">Low AI Tool Usage</div>
+            <span className="text-[10px] text-slate-400 block pt-1">→ Revora AI Revenue Analytics</span>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span className="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div className="text-xs font-bold text-white">High OTA Commission Drain</div>
+            <span className="text-[10px] text-slate-400 block pt-1">→ Revora Profitability Insights</span>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span className="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div className="text-xs font-bold text-white">Intuition-Based Rate Changes</div>
+            <span className="text-[10px] text-slate-400 block pt-1">→ Revora Revenue Simulation</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 13. SOURCES & DATA NOTES (INSTITUTIONAL FOOTER) */}
+      <section className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+        <div className="flex items-center gap-2 text-xs font-bold text-white uppercase tracking-wider border-b border-slate-800 pb-2">
+          <FileCheck className="w-4 h-4 text-[#19D8F5]" /> Sources, Citations & Data Notes
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[11px] text-slate-400 leading-relaxed">
+          <div className="space-y-1">
+            <span className="font-semibold text-slate-300 block">Secondary Literature Sources:</span>
+            <p>1. Ministry of Tourism-Linked Survey (2023) — Small Hotel Infrastructure Report.</p>
+            <p>2. Kshirsagar et al. (2026) — Technology Adoption in Independent Budget Hotels in Maharashtra.</p>
+            <p>3. HVS India Hospitality Tech Report (2025/2026) — AI & Enterprise Chain Investments.</p>
+          </div>
+          <div className="space-y-1">
+            <span className="font-semibold text-slate-300 block">Methodological Limitations:</span>
+            <p>• Categorizations by room size (Matrix Section 4) reflect qualitative synthesis from literature and field audits rather than a single nationwide census.</p>
+            <p>• Primary survey collection is currently ongoing across selected regional hospitality hubs in India.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
+
+function AboutPage({ navigate }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-xs font-bold uppercase tracking-widest text-[#19D8F5]">ABOUT VENTURE7</div>
+        <h1 className="text-4xl font-extrabold text-white">Building Practical Intelligence for Hotels</h1>
+        <p className="text-slate-300 text-base leading-relaxed">
+          Venture7 is building practical technology solutions that help businesses make better decisions using data and AI.
+        </p>
+      </div>
+
+      <div className="p-8 rounded-2xl bg-[#0D162D] border border-slate-800 max-w-3xl mx-auto space-y-4 text-center">
+        <h2 className="text-2xl font-bold text-white">Revora by Venture7</h2>
+        <p className="text-xs text-slate-300 leading-relaxed">
+          Revora is Venture7's flagship AI-powered hotel management and revenue intelligence platform, engineered specifically to serve independent and regional hoteliers across India and beyond.
+        </p>
+      </div>
+
+      <div className="space-y-8">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-white">Leadership & Support Team</h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {TEAM_MEMBERS.map((member, idx) => (
+            <div key={idx} className="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 text-center space-y-3">
+              <div className="w-14 h-14 rounded-full bg-[#19D8F5]/10 border border-[#19D8F5]/30 text-[#19D8F5] font-extrabold text-lg flex items-center justify-center mx-auto">
+                {member.initials}
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white">{member.name}</h3>
+                <p className="text-xs text-[#19D8F5] font-semibold mt-0.5">{member.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function InvestorsPage({ navigate }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-xs font-bold uppercase tracking-widest text-[#19D8F5]">VENTURE7 OPPORTUNITY</div>
+        <h1 className="text-4xl font-extrabold text-white">Building the Intelligence Layer for Independent Hotels</h1>
+        <p className="text-slate-300 text-sm">Empowering Tier 2 & Tier 3 hospitality operators with enterprise-level yield optimization.</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3">
+          <h3 className="text-lg font-bold text-white">Market Opportunity</h3>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            Millions of independent boutique hotels across emerging economies lack accessible revenue management software. Revora bridges this gap with intuitive AI decision support.
+          </p>
+        </div>
+
+        <div className="p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3">
+          <h3 className="text-lg font-bold text-white">SaaS Revenue Model</h3>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            Simple, transparent monthly and annual subscription tiers tailored for properties with varying room counts and analytics requirements.
+          </p>
+        </div>
+      </div>
+
+      <div className="text-center">
+        <button onClick={() => navigate('/contact')} className="px-8 py-3.5 rounded-xl bg-[#19D8F5] text-[#080F23] font-bold text-sm hover:brightness-110">
+          Talk to Venture7 →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ContactPage() {
+  return (
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10">
+      <div className="text-center space-y-3">
+        <div className="text-xs font-bold uppercase tracking-widest text-[#19D8F5]">CONTACT US</div>
+        <h1 className="text-4xl font-extrabold text-white">Let's Talk About Your Hotel</h1>
+        <p className="text-slate-400 text-sm">Have questions about Revora or Venture7? Send us a message.</p>
+      </div>
+
+      <form onSubmit={(e) => e.preventDefault()} className="p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="text-xs font-semibold text-slate-300">Name</label>
+            <input type="text" placeholder="Your Name" className="w-full px-4 py-3 rounded-xl bg-[#080F23] border border-slate-800 text-white text-xs focus:border-[#19D8F5] focus:outline-none" />
+          </div>
+          <div className="space-y-2">
+            <label className="text-xs font-semibold text-slate-300">Hotel Name</label>
+            <input type="text" placeholder="Hotel / Property Name" className="w-full px-4 py-3 rounded-xl bg-[#080F23] border border-slate-800 text-white text-xs focus:border-[#19D8F5] focus:outline-none" />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="text-xs font-semibold text-slate-300">Email</label>
+            <input type="email" placeholder="you@hotel.com" className="w-full px-4 py-3 rounded-xl bg-[#080F23] border border-slate-800 text-white text-xs focus:border-[#19D8F5] focus:outline-none" />
+          </div>
+          <div className="space-y-2">
+            <label className="text-xs font-semibold text-slate-300">Phone</label>
+            <input type="tel" placeholder="+91 98765 43210" className="w-full px-4 py-3 rounded-xl bg-[#080F23] border border-slate-800 text-white text-xs focus:border-[#19D8F5] focus:outline-none" />
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-xs font-semibold text-slate-300">Number of Rooms</label>
+          <input type="text" placeholder="e.g. 25 Rooms" className="w-full px-4 py-3 rounded-xl bg-[#080F23] border border-slate-800 text-white text-xs focus:border-[#19D8F5] focus:outline-none" />
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-xs font-semibold text-slate-300">Message</label>
+          <textarea rows="4" placeholder="Tell us how we can help your property..." className="w-full px-4 py-3 rounded-xl bg-[#080F23] border border-slate-800 text-white text-xs focus:border-[#19D8F5] focus:outline-none"></textarea>
+        </div>
+
+        <button type="submit" className="w-full py-4 rounded-xl bg-gradient-to-r from-[#19D8F5] to-[#22C7F5] text-[#080F23] font-bold text-sm hover:brightness-110 transition-all">
+          Request a Demo
+        </button>
+      </form>
+    </div>
+  );
+}

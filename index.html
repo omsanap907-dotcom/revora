@@ -18,7 +18,8 @@
               900: '#080F23',
               850: '#0B1328',
               800: '#0D162D',
-              700: '#111C3A'
+              700: '#111C3A',
+              600: '#1A2952'
             },
             cyan: {
               accent: '#19D8F5',
@@ -34,13 +35,19 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Custom Scrollbar Hiding for Navigation */
     .scrollbar-none::-webkit-scrollbar {
       display: none;
     }
     .scrollbar-none {
       -ms-overflow-style: none;
       scrollbar-width: none;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .report-grid-pattern {
+      background-image: radial-gradient(rgba(25, 216, 245, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
     }
   </style>
 </head>
@@ -75,7 +82,7 @@
         <button onclick="navigateTo('/solutions')" id="nav-solutions" class="nav-btn px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/30">Solutions</button>
         <button onclick="navigateTo('/features')" id="nav-features" class="nav-btn px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/30">Features</button>
         <button onclick="navigateTo('/pricing')" id="nav-pricing" class="nav-btn px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/30">Pricing</button>
-        <button onclick="navigateTo('/blog')" id="nav-blog" class="nav-btn px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/30">Blog</button>
+        <button onclick="navigateTo('/blog')" id="nav-blog" class="nav-btn px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/30">Research / Blog</button>
         <button onclick="navigateTo('/investors')" id="nav-investors" class="nav-btn px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/30">Investors</button>
         <button onclick="navigateTo('/about')" id="nav-about" class="nav-btn px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/30">About</button>
         <button onclick="navigateTo('/contact')" id="nav-contact" class="nav-btn px-2 sm:px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/30">Contact</button>
@@ -528,30 +535,55 @@
       </div>
     </div>
 
-    <!-- BLOG / MARKET RESEARCH REPORT PAGE VIEW -->
-    <div id="page-blog" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-16 sm:space-y-24">
+    <!-- FULL-LENGTH INSTITUTIONAL RESEARCH REPORT PAGE VIEW -->
+    <div id="page-blog" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-16 sm:space-y-20 report-grid-pattern">
       
-      <!-- INSTITUTIONAL REPORT COVER HEADER -->
-      <section class="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#0D162D] via-[#080F23] to-[#0D162D] border border-[#19D8F5]/30 shadow-2xl relative overflow-hidden space-y-6">
+      <!-- REPORT SUB-NAVIGATION BAR (FLOATING INDEX) -->
+      <nav class="sticky top-16 z-40 bg-[#080F23]/95 backdrop-blur-md border-b border-slate-800/80 py-2.5 -mx-4 px-4 sm:-mx-8 sm:px-8 overflow-x-auto scrollbar-none flex items-center justify-between gap-4 text-xs font-mono font-semibold">
+        <div class="flex items-center gap-1.5 shrink-0 text-slate-400">
+          <i data-lucide="compass" class="w-4 h-4 text-[#19D8F5]"></i>
+          <span class="text-white font-bold uppercase tracking-wider text-[11px]">REPORT INDEX:</span>
+        </div>
+        <div class="flex items-center gap-3 shrink-0 text-[11px]">
+          <a href="#report-summary" class="hover:text-[#19D8F5] text-slate-300 transition-colors">01. Summary</a>
+          <a href="#report-questions" class="hover:text-[#19D8F5] text-slate-300 transition-colors">02. Research Questions</a>
+          <a href="#report-scope" class="hover:text-[#19D8F5] text-slate-300 transition-colors">03. Scope</a>
+          <a href="#report-evolution" class="hover:text-[#19D8F5] text-slate-300 transition-colors">04. Tech Evolution</a>
+          <a href="#report-landscape" class="hover:text-[#19D8F5] text-slate-300 transition-colors">05. Technology Landscape</a>
+          <a href="#report-matrix" class="hover:text-[#19D8F5] text-slate-300 transition-colors">06. Size Matrix</a>
+          <a href="#report-pms-vs-ri" class="hover:text-[#19D8F5] text-slate-300 transition-colors">07. PMS vs RI</a>
+          <a href="#report-metrics" class="hover:text-[#19D8F5] text-slate-300 transition-colors">08. Metrics Guide</a>
+          <a href="#report-field" class="hover:text-[#19D8F5] text-slate-300 transition-colors">09. Field Research</a>
+          <a href="#report-opportunity" class="hover:text-[#19D8F5] text-slate-300 transition-colors">10. Opportunity</a>
+          <a href="#report-mapping" class="hover:text-[#19D8F5] text-slate-300 transition-colors">11. Revora Mapping</a>
+          <a href="#report-glossary" class="hover:text-[#19D8F5] text-slate-300 transition-colors">12. Glossary</a>
+        </div>
+      </nav>
+
+      <!-- REPORT COVER & TITLE -->
+      <section id="report-cover" class="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#0D162D] via-[#080F23] to-[#0D162D] border border-[#19D8F5]/30 shadow-2xl relative overflow-hidden space-y-8">
         <div class="absolute top-0 right-0 w-96 h-96 bg-[#19D8F5]/5 rounded-full blur-3xl pointer-events-none"></div>
         
         <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-6">
           <div class="flex items-center gap-3">
-            <div class="p-2 rounded-xl bg-[#19D8F5]/10 border border-[#19D8F5]/30 text-[#19D8F5]">
-              <i data-lucide="book-open" class="w-5 h-5"></i>
+            <div class="p-2.5 rounded-xl bg-[#19D8F5]/10 border border-[#19D8F5]/30 text-[#19D8F5]">
+              <i data-lucide="book-open" class="w-6 h-6"></i>
             </div>
             <div>
-              <span class="text-xs font-mono font-bold text-[#19D8F5] uppercase tracking-widest block">REVORA RESEARCH & MARKET INTELLIGENCE</span>
-              <span class="text-[11px] text-slate-400">Published by Venture7 Research Group</span>
+              <span class="text-xs font-mono font-bold text-[#19D8F5] uppercase tracking-widest block">REVORA RESEARCH & MARKET INTELLIGENCE REPORT</span>
+              <span class="text-[11px] text-slate-400">Published by Venture7 Research Group · Industry Benchmark Study</span>
             </div>
           </div>
-          <div class="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 bg-[#080F23] px-3 py-1.5 rounded-full border border-slate-800">
-            <i data-lucide="globe" class="w-3.5 h-3.5 text-[#19D8F5]"></i>
-            <span>INDIA MARKET REPORT | 2026</span>
+          <div class="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 bg-[#080F23] px-3.5 py-2 rounded-full border border-slate-800">
+            <i data-lucide="globe" class="w-4 h-4 text-[#19D8F5]"></i>
+            <span>INDIA HOSPITALITY REPORT | AUGUST 2026</span>
           </div>
         </div>
 
         <div class="space-y-4 max-w-4xl">
+          <span class="px-3 py-1 rounded-full bg-[#19D8F5]/10 border border-[#19D8F5]/30 text-[#19D8F5] text-xs font-mono font-bold uppercase tracking-wider inline-block">
+            PUBLICATION — MARKET RESEARCH REPORT
+          </span>
           <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight">
             REVORA HOTEL TECHNOLOGY <br class="hidden sm:block">
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#19D8F5] via-[#22C7F5] to-[#3B82F6]">
@@ -559,66 +591,465 @@
             </span>
           </h1>
           <p class="text-base sm:text-xl text-slate-300 font-medium leading-relaxed">
-            Technology Adoption, Revenue Management Practices & Digital Opportunity in Small and Mid-Sized Independent Hotels
+            Technology Adoption, Revenue Management & AI Opportunity in Small, Independent and Mid-Sized Hotels
           </p>
         </div>
 
-        <!-- Executive Quick Stats Strip -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-slate-800/80">
-          <div class="p-4 rounded-xl bg-[#080F23]/80 border border-slate-800/80 space-y-1">
-            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Small Hotel PMS Deficit</span>
-            <div class="text-2xl font-bold text-white">48%</div>
-            <span class="text-[10px] text-[#19D8F5] block font-medium">Lack Digital PMS (Govt 2023)</span>
-          </div>
-          <div class="p-4 rounded-xl bg-[#080F23]/80 border border-slate-800/80 space-y-1">
-            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Hotelier Tech Priority</span>
-            <div class="text-2xl font-bold text-white">86%</div>
-            <span class="text-[10px] text-[#19D8F5] block font-medium">Rank PMS Top Priority System</span>
-          </div>
-          <div class="p-4 rounded-xl bg-[#080F23]/80 border border-slate-800/80 space-y-1">
-            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">OTA Revenue Drain</span>
-            <div class="text-2xl font-bold text-amber-400">15%–30%</div>
-            <span class="text-[10px] text-slate-400 block font-medium">Commission Costs Per Booking</span>
-          </div>
-          <div class="p-4 rounded-xl bg-[#080F23]/80 border border-slate-800/80 space-y-1">
-            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Small Hotel AI Usage</span>
-            <div class="text-2xl font-bold text-rose-400">~0%</div>
-            <span class="text-[10px] text-slate-400 block font-medium">Qualitative Market Observation</span>
+        <div class="p-6 rounded-2xl bg-[#080F23]/90 border border-slate-800 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p>
+            This report examines the adoption of hotel technology and revenue-management practices among small, independent and mid-sized hotels. The research focuses on the availability and use of PMS, booking systems, channel managers, revenue-management systems, pricing analytics, AI-powered revenue management and profitability intelligence.
+          </p>
+          <div class="pt-3 font-mono text-[11px] text-[#19D8F5] font-semibold flex items-center gap-2">
+            <i data-lucide="layers" class="w-4 h-4"></i>
+            <span>Research Methodology Scope: Secondary Literature Review • Primary Polling • Field Research Audits</span>
           </div>
         </div>
       </section>
 
       <!-- 1. EXECUTIVE SUMMARY -->
-      <section class="space-y-6">
-        <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
-          <i data-lucide="file-text" class="w-5 h-5 text-[#19D8F5]"></i>
-          <h2 class="text-2xl font-bold text-white uppercase tracking-wider">1. Executive Summary</h2>
+      <section id="report-summary" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-5">
+          <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+            <i data-lucide="file-text" class="w-5 h-5 text-[#19D8F5]"></i>
+            <h2 class="text-2xl font-bold text-white uppercase tracking-wider">1. Executive Summary</h2>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Independent and budget hotels form the backbone of regional tourism across India. However, operational intelligence in this segment remains severely constrained by manual workflows and fragmented digital tools. We conducted this research to evaluate how small and mid-sized hotel operators utilize front-desk software, manage distribution channels, and make room pricing decisions.
+          </p>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Our findings indicate a pronounced technology deficit. While basic cloud Property Management Systems (PMS) are expanding into properties with over 50 rooms, sub-30-room boutique properties overwhelmingly operate via paper ledgers or standalone spreadsheets. Furthermore, dynamic yield management tools remain practically non-existent in the budget sector, where operators continue to rely on fixed seasonal room tariffs regardless of short-term weekend or event demand spikes.
+          </p>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            This operational friction creates a severe financial drain. Heavy reliance on Online Travel Agencies (OTAs) yields commission costs ranging between 15% and 30% per booking without direct web booking counterweights. By bridging basic operational data with accessible AI decision support, Revora provides independent hoteliers with enterprise-level yield guidance without requiring dedicated revenue management staff.
+          </p>
         </div>
 
-        <div class="p-6 sm:p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6 text-slate-300 text-xs sm:text-sm leading-relaxed">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="space-y-3">
-              <h3 class="text-base font-bold text-white flex items-center gap-2">
-                <i data-lucide="target" class="w-4 h-4 text-[#19D8F5]"></i> Research Objective
-              </h3>
-              <p>
-                This study evaluates technology adoption, distribution reliance, pricing practices, and revenue management mechanisms across independent small and mid-sized hotels in India.
-              </p>
+        <!-- Sidebar Callouts -->
+        <div class="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4 h-fit">
+          <h3 class="text-xs font-mono font-bold text-[#19D8F5] uppercase tracking-widest flex items-center gap-2 border-b border-slate-800 pb-2">
+            <i data-lucide="key" class="w-4 h-4"></i> Key Research Sidebar
+          </h3>
+          <ul class="space-y-3 text-xs text-slate-300">
+            <li class="p-3 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+              <span class="text-[10px] font-mono text-[#19D8F5] font-bold block">48% PMS DEFICIT</span>
+              <p>48% of small budget properties lack cloud PMS infrastructure (Govt 2023).</p>
+            </li>
+            <li class="p-3 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+              <span class="text-[10px] font-mono text-[#19D8F5] font-bold block">86% SYSTEM PRIORITY</span>
+              <p>86% of tech-adopting hoteliers rank front-desk PMS as their highest priority tool.</p>
+            </li>
+            <li class="p-3 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+              <span class="text-[10px] font-mono text-amber-400 font-bold block">15–30% OTA COMMISSIONS</span>
+              <p>High distribution fees severely erode net room profit margins (GOPPAR).</p>
+            </li>
+            <li class="p-3 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+              <span class="text-[10px] font-mono text-rose-400 font-bold block">~0% AI USAGE IN BUDGET</span>
+              <p>AI dynamic pricing tools sit at near zero penetration in small independent hotels.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2. KEY RESEARCH QUESTIONS -->
+      <section id="report-questions" class="space-y-6">
+        <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <i data-lucide="help-circle" class="w-5 h-5 text-[#19D8F5]"></i>
+          <h2 class="text-2xl font-bold text-white uppercase tracking-wider">2. Key Research Questions (RQ01–RQ10)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ01 — PMS ADOPTION</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">How widely are PMS systems used among different hotel size segments?</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ02 — RESERVATIONS</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">How do smaller hotels manage room bookings and reservation engines?</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ03 — DISTRIBUTION</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">How common are automated channel managers in budget properties?</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ04 — PRICING METHOD</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">How are independent hoteliers currently making daily pricing decisions?</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ05 — RMS ADOPTION</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">How common are formal revenue management systems in small hotels?</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ06 — PRICING ANALYTICS</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">How widely are demand analytics and competitor scanning tools used?</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ07 — AI ADOPTION</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">What is the current adoption role of AI in hotel revenue management?</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ08 — PROFIT VISIBILITY</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">How common are financial intelligence systems showing Net GOPPAR?</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ09 — HOTEL SCALE GRADIENT</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">Does hotel room key count directly correlate with software adoption?</p>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0D162D] border border-slate-800 space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#19D8F5] uppercase">RQ10 — MARKET GAP</span>
+            <p class="text-xs text-slate-300 font-medium leading-snug">Where does the largest technology gap appear in the hotel software stack?</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. RESEARCH SCOPE -->
+      <section id="report-scope" class="space-y-6">
+        <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <i data-lucide="target" class="w-5 h-5 text-[#19D8F5]"></i>
+          <h2 class="text-2xl font-bold text-white uppercase tracking-wider">3. Research Scope & Parameters</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6 text-xs sm:text-sm text-slate-300">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-5 rounded-xl bg-[#080F23] border border-slate-800 space-y-2">
+              <span class="text-xs font-mono font-bold text-[#19D8F5] uppercase">GEOGRAPHIC BOUNDARIES</span>
+              <h3 class="text-sm font-bold text-white">India Hospitality Market</h3>
+              <p className="leading-relaxed">Focus on emerging regional hospitality hubs across Tier-2 and Tier-3 Indian cities, with direct field audits conducted in Nashik, Maharashtra.</p>
             </div>
-            <div class="space-y-3">
-              <h3 class="text-base font-bold text-white flex items-center gap-2">
-                <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i> Core Market Problem
-              </h3>
-              <p>
-                While basic front-desk tools are gradually spreading, small and mid-sized independent hotels operate with fragmented data silos, fixed non-yield room tariffs, high OTA commission friction, and zero predictive analytics.
-              </p>
+
+            <div class="p-5 rounded-xl bg-[#080F23] border border-slate-800 space-y-2">
+              <span class="text-xs font-mono font-bold text-[#19D8F5] uppercase">HOTEL SEGMENTS</span>
+              <h3 class="text-sm font-bold text-white">Small & Mid-Sized Properties</h3>
+              <p className="leading-relaxed">Covers independent boutique hotels, budget properties, guesthouses, and regional lodges ranging from sub-30 keys up to 150 room properties.</p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-[#080F23] border border-slate-800 space-y-2">
+              <span class="text-xs font-mono font-bold text-[#19D8F5] uppercase">TECHNOLOGY PILLARS</span>
+              <h3 class="text-sm font-bold text-white">7 Core Software Categories</h3>
+              <p className="leading-relaxed">Examines Property Management Systems (PMS), CRS/Booking Engines, Channel Managers, RMS, Pricing Analytics, AI Systems, and Financial Intelligence.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- FIELD RESEARCH — NASHIK (FEATURED FIGURE & PHOTO) -->
-      <section class="p-6 sm:p-10 rounded-3xl bg-[#0D162D] border border-[#19D8F5]/40 shadow-2xl space-y-6 relative overflow-hidden">
+      <!-- 4. HOTEL TECHNOLOGY EVOLUTION TIMELINE -->
+      <section id="report-evolution" class="space-y-6">
+        <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <i data-lucide="clock" class="w-5 h-5 text-[#19D8F5]"></i>
+          <h2 class="text-2xl font-bold text-white uppercase tracking-wider">4. Evolution of Hotel Technology</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-2">
+              <span class="text-[10px] font-mono text-[#19D8F5] font-bold">STAGE 01 · MANUAL</span>
+              <h3 class="text-sm font-bold text-white">Paper Registers & Excel</h3>
+              <p className="text-slate-400">Solves basic check-in logging. Produces manual ledger counts. Leaves zero forecasting or rate flexibility.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-2">
+              <span class="text-[10px] font-mono text-[#19D8F5] font-bold">STAGE 02 · FRONT-DESK PMS</span>
+              <h3 class="text-sm font-bold text-white">Cloud PMS & Billing</h3>
+              <p className="text-slate-400">Solves guest folio management. Produces historical occupancy logs. Leaves distribution silos and fixed tariffs.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-2">
+              <span class="text-[10px] font-mono text-[#19D8F5] font-bold">STAGE 03 · DISTRIBUTION</span>
+              <h3 class="text-sm font-bold text-white">Channel Managers & OTAs</h3>
+              <p className="text-slate-400">Solves manual OTA extranet updates. Produces multi-channel bookings. Leaves high commission costs & unpriced surges.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#080F23] border border-[#19D8F5] space-y-2 bg-[#19D8F5]/5">
+              <span class="text-[10px] font-mono text-[#19D8F5] font-bold">STAGE 04 · REVORA INTELLIGENCE</span>
+              <h3 class="text-sm font-bold text-white">AI Revenue & Yield Control</h3>
+              <p className="text-slate-300">Solves fixed room pricing & low yield. Produces predictive RevPAR insights & plain-English decision guidance.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. HOTEL TECHNOLOGY LANDSCAPE ANALYSIS -->
+      <section id="report-landscape" class="space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2">
+            <i data-lucide="layers-3" class="w-5 h-5 text-[#19D8F5]"></i>
+            <h2 class="text-2xl font-bold text-white uppercase tracking-wider">5. Hotel Technology Landscape Analysis</h2>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-[#080F23] border border-slate-700 text-[#19D8F5] text-[10px] font-mono uppercase">
+            Comprehensive Analysis Across 7 Core Pillars
+          </span>
+        </div>
+
+        <div class="space-y-6">
+          
+          <!-- 5.1 PMS -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span class="p-1.5 rounded bg-[#19D8F5]/10 text-[#19D8F5] font-mono text-xs">5.1</span>
+                Property Management Systems (PMS)
+              </h3>
+              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold">MEDIUM ADOPTION (~52%)</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              PMS acts as the digital operational spine of a hotel, recording check-ins, guest folios, and room statuses. Our secondary synthesis shows roughly 48% of small budget hotels lack cloud PMS infrastructure (Govt 2023), relying instead on paper registers or basic Excel sheets. However, among hoteliers who adopt technology, 86% single out PMS as their top priority tool.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-1">
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Finding:</strong> High front-desk priority but sub-50 room properties lag in cloud adoption.</div>
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Hotel-Size Pattern:</strong> Sub-30 rooms use paper; 50+ rooms adopt basic cloud platforms.</div>
+              <div class="p-3 rounded-xl bg-[#19D8F5]/10 border border-[#19D8F5]/30"><strong class="text-[#19D8F5] block mb-0.5">Revora Implication:</strong> Revora acts as an overlay layer without requiring legacy server upgrades.</div>
+            </div>
+          </div>
+
+          <!-- 5.2 BOOKING ENGINES -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span class="p-1.5 rounded bg-[#19D8F5]/10 text-[#19D8F5] font-mono text-xs">5.2</span>
+                Direct Booking & Reservation Engines
+              </h3>
+              <span class="px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs font-bold">LOW ADOPTION (~35%)</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Direct booking engines allow guests to reserve rooms directly via the hotel's website without third-party fees. Over 60% of online bookings in India flow through MakeMyTrip/Goibibo with 15-30% commissions. Direct booking engines remain rare in sub-30 room hotels due to technical barriers.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-1">
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Finding:</strong> Heavy OTA reliance drains direct web reservation share.</div>
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Hotel-Size Pattern:</strong> Almost non-existent in sub-30 key properties; 100+ key properties use custom CRS.</div>
+              <div class="p-3 rounded-xl bg-[#19D8F5]/10 border border-[#19D8F5]/30"><strong class="text-[#19D8F5] block mb-0.5">Revora Implication:</strong> Revora quantifies channel distribution acquisition costs to highlight net GOPPAR.</div>
+            </div>
+          </div>
+
+          <!-- 5.3 CHANNEL MANAGERS -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span class="p-1.5 rounded bg-[#19D8F5]/10 text-[#19D8F5] font-mono text-xs">5.3</span>
+                Automated Channel Managers
+              </h3>
+              <span class="px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs font-bold">LOW ADOPTION (~28%)</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Channel managers automatically synchronize inventory and rate changes across multiple OTAs in real time. Small budget hoteliers in Maharashtra (Kshirsagar et al. 2026) manually update separate OTA extranets, multiplying double-booking risks and room rate discrepancies.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-1">
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Finding:</strong> Manual OTA extranet updates create inventory lag and double bookings.</div>
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Hotel-Size Pattern:</strong> Rare in sub-30 room hotels; adopted in 50-100 key properties to manage OTAs.</div>
+              <div class="p-3 rounded-xl bg-[#19D8F5]/10 border border-[#19D8F5]/30"><strong class="text-[#19D8F5] block mb-0.5">Revora Implication:</strong> Revora provides yield guidance for channel distribution strategy.</div>
+            </div>
+          </div>
+
+          <!-- 5.4 RMS & PRICING ANALYTICS -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span class="p-1.5 rounded bg-[#19D8F5]/10 text-[#19D8F5] font-mono text-xs">5.4 & 5.5</span>
+                Revenue Management Systems (RMS) & Pricing Analytics
+              </h3>
+              <span class="px-2.5 py-1 rounded bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-xs font-bold">RARE ADOPTION (~12%)</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              RMS platforms optimize room yields through dynamic pricing algorithms and lead-time demand forecasting. Independent budget hotels overwhelmingly use fixed room tariffs throughout seasons (Kshirsagar 2026), missing unpriced weekend or event demand surges due to software cost barriers.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-1">
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Finding:</strong> Fixed tariffs prevail; dynamic yield tools are priced out of reach.</div>
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Hotel-Size Pattern:</strong> Practically absent under 50 rooms; restricted to 150+ key enterprise chains.</div>
+              <div class="p-3 rounded-xl bg-[#19D8F5]/10 border border-[#19D8F5]/30"><strong class="text-[#19D8F5] block mb-0.5">Revora Implication:</strong> Revora democratizes dynamic pricing starting at an accessible ₹1,599/mo subscription.</div>
+            </div>
+          </div>
+
+          <!-- 5.6 & 5.7 AI & PROFITABILITY INTELLIGENCE -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span class="p-1.5 rounded bg-[#19D8F5]/10 text-[#19D8F5] font-mono text-xs">5.6 & 5.7</span>
+                AI Revenue Management & Profitability Intelligence
+              </h3>
+              <span class="px-2.5 py-1 rounded bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-xs font-bold">QUALITATIVE (~0% SMALL HOTEL ADOPTION)</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              AI-driven decision support automatically identifies pricing anomalies, cancellation trends, and cost leakage. While 60% of large enterprise chains plan AI investments (HVS 2026), small independent properties sit at ~0% adoption, leaving managers without net operating profit clarity.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-1">
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Finding:</strong> Enterprise chains adopt AI while independent budget hotels remain at ~0%.</div>
+              <div class="p-3 rounded-xl bg-[#080F23] border border-slate-800"><strong class="text-white block mb-0.5">Hotel-Size Pattern:</strong> Zero usage in sub-75 room independent properties due to technical complexity.</div>
+              <div class="p-3 rounded-xl bg-[#19D8F5]/10 border border-[#19D8F5]/30"><strong class="text-[#19D8F5] block mb-0.5">Revora Implication:</strong> Revora provides plain-English AI recommendations for net profitability guidance.</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 6. ADOPTION MATRIX BY HOTEL SIZE (HEATMAP) -->
+      <section id="report-matrix" class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2">
+            <i data-lucide="bar-chart-2" class="w-5 h-5 text-[#19D8F5]"></i>
+            <h2 class="text-2xl font-bold text-white uppercase tracking-wider">6. Technology Adoption Pattern by Hotel Size</h2>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-[#080F23] border border-slate-700 text-[#19D8F5] text-[10px] font-mono uppercase">
+            Qualitative Market Research Synthesis — Not a Census
+          </span>
+        </div>
+
+        <p class="text-xs text-slate-400">
+          This matrix synthesizes qualitative findings across literature, vendor audits, and field observations to map technology penetration by hotel scale.
+        </p>
+
+        <div class="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 overflow-x-auto">
+          <table class="w-full min-w-[750px] text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-800 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <th class="py-3.5 px-3">Property Scale</th>
+                <th class="py-3.5 px-3">PMS</th>
+                <th class="py-3.5 px-3">Booking Engine</th>
+                <th class="py-3.5 px-3">Channel Mgr</th>
+                <th class="py-3.5 px-3">Rev. Mgmt (RMS)</th>
+                <th class="py-3.5 px-3">Pricing Analytics</th>
+                <th class="py-3.5 px-3">AI Analytics</th>
+                <th class="py-3.5 px-3">Profit Intelligence</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 text-xs font-medium">
+              <tr class="hover:bg-[#080F23]/50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-[#19D8F5]">Under 30 Rooms</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold">LOW</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+              </tr>
+              <tr class="hover:bg-[#080F23]/50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-[#19D8F5]">30–50 Rooms</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold">MEDIUM</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold">LOW</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold">LOW</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+              </tr>
+              <tr class="hover:bg-[#080F23]/50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-[#19D8F5]">50–100 Rooms</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold">MEDIUM</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold">MEDIUM</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold">LOW</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold">LOW</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-500 text-[10px] font-bold">RARE</span></td>
+              </tr>
+              <tr class="hover:bg-[#080F23]/50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-[#19D8F5]">100–150 Rooms</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold">MEDIUM</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold">MEDIUM</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold">LOW</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold">LOW</span></td>
+              </tr>
+              <tr class="hover:bg-[#080F23]/50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-[#19D8F5]">150+ Rooms</td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">HIGH</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/30 text-purple-300 text-[10px] font-bold">EMERGING</span></td>
+                <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold">MEDIUM</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 7. PMS VS REVENUE INTELLIGENCE -->
+      <section id="report-pms-vs-ri" class="space-y-6">
+        <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <i data-lucide="split" class="w-5 h-5 text-[#19D8F5]"></i>
+          <h2 class="text-2xl font-bold text-white uppercase tracking-wider">7. PMS vs Revenue Intelligence Architecture</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+          <div class="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 class="text-base font-bold text-white flex items-center gap-2">
+                <i data-lucide="building-2" class="w-4 h-4 text-[#19D8F5]"></i> Operational PMS Layer
+              </h3>
+              <span class="text-[10px] font-mono text-slate-400">FRONT-DESK SPINE</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed">
+              Records check-ins, guest folios, room status, housekeeping, and billing. Focuses on operational execution and historical record-keeping.
+            </p>
+            <ul class="space-y-2 text-slate-400 list-disc list-inside">
+              <li>Guest check-in & check-out logs</li>
+              <li>Room clean/dirty status tracking</li>
+              <li>Basic daily revenue summaries</li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#0D162D] border border-[#19D8F5]/40 space-y-4 bg-[#19D8F5]/5">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 class="text-base font-bold text-white flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-[#19D8F5]"></i> Revenue Intelligence Layer (Revora)
+              </h3>
+              <span class="text-[10px] font-mono text-[#19D8F5] font-bold">DECISION ENGINE</span>
+            </div>
+            <p class="text-slate-200 leading-relaxed">
+              Analyzes booking pace, lead times, channel distribution costs, ADR, RevPAR, and market demand to provide plain-English pricing and yield recommendations.
+            </p>
+            <ul class="space-y-2 text-slate-300 list-disc list-inside">
+              <li>Predictive RevPAR & demand forecasting</li>
+              <li>Dynamic weekend/event room rate yield guidance</li>
+              <li>Net GOPPAR profitability analysis</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-300 italic border-l-2 border-[#19D8F5] pl-3 py-1 bg-[#080F23] rounded-r-lg">
+          “Operational software and revenue intelligence solve completely different problems. Revora is engineered as an overlay decision layer rather than replacing the property's core operational PMS.”
+        </p>
+      </section>
+
+      <!-- 8. REVENUE METRICS EXPLAINED -->
+      <section id="report-metrics" class="space-y-6">
+        <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <i data-lucide="calculator" class="w-5 h-5 text-[#19D8F5]"></i>
+          <h2 class="text-2xl font-bold text-white uppercase tracking-wider">8. Revenue Metrics Guide & Formulas</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3">
+            <span class="text-[10px] font-mono text-[#19D8F5] font-bold uppercase block">METRIC 01</span>
+            <h3 class="text-sm font-bold text-white">Occupancy Rate</h3>
+            <p class="text-slate-300 leading-relaxed">Percentage of available rooms sold during a specific timeframe.</p>
+            <div class="p-2.5 rounded bg-[#080F23] font-mono text-[11px] text-[#19D8F5] font-bold border border-slate-800">
+              (Rooms Sold ÷ Total Available Rooms) × 100
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3">
+            <span class="text-[10px] font-mono text-[#19D8F5] font-bold uppercase block">METRIC 02</span>
+            <h3 class="text-sm font-bold text-white">Average Daily Rate (ADR)</h3>
+            <p class="text-slate-300 leading-relaxed">Average rental revenue earned per paid occupied room per day.</p>
+            <div class="p-2.5 rounded bg-[#080F23] font-mono text-[11px] text-[#19D8F5] font-bold border border-slate-800">
+              Total Room Revenue ÷ Paid Occupied Rooms
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-3">
+            <span class="text-[10px] font-mono text-[#19D8F5] font-bold uppercase block">METRIC 03</span>
+            <h3 class="text-sm font-bold text-white">RevPAR (Revenue Per Available Room)</h3>
+            <p class="text-slate-300 leading-relaxed">Core hospitality metric capturing both pricing power and room occupancy.</p>
+            <div class="p-2.5 rounded bg-[#080F23] font-mono text-[11px] text-[#19D8F5] font-bold border border-slate-800">
+              ADR × Occupancy Rate  (OR  Total Revenue ÷ Total Rooms)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. FIELD RESEARCH (NASHIK) PHOTO FEATURE STORY -->
+      <section id="report-field" class="p-6 sm:p-10 rounded-3xl bg-[#0D162D] border border-[#19D8F5]/40 shadow-2xl space-y-6 relative overflow-hidden">
         <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#19D8F5]/10 border border-[#19D8F5]/40 text-xs font-mono font-bold uppercase tracking-wider text-[#19D8F5]">
             <i data-lucide="camera" class="w-3.5 h-3.5"></i> FIELD RESEARCH · NASHIK · AUGUST 2026
@@ -632,7 +1063,7 @@
           </h2>
         </div>
 
-        <!-- PHOTO DISPLAY -->
+        <!-- UPLOADED PHOTO DISPLAY -->
         <div class="space-y-3">
           <div class="rounded-2xl overflow-hidden border border-slate-700 bg-slate-900 shadow-xl max-h-[600px] flex items-center justify-center">
             <img src="WhatsApp Image 2026-08-21 at 9.24.01 PM.jpeg" alt="Revora Field Research Team at Hotel Highway Palace, Nashik, Maharashtra" class="w-full h-auto object-cover max-h-[600px]" onerror="this.src='https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80'">
@@ -642,7 +1073,6 @@
           </p>
         </div>
 
-        <!-- NARRATIVE & RESEARCH OBJECTIVES -->
         <div class="space-y-6 pt-2">
           <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
             Research is not limited to online data. Our team conducted on-ground research to understand how local hotels operate, what systems they currently use, and where technology gaps exist.
@@ -679,6 +1109,111 @@
                 <span>Interest in AI-powered revenue intelligence</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. MARKET OPPORTUNITY FRAMEWORK -->
+      <section id="report-opportunity" class="space-y-6">
+        <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <i data-lucide="target" class="w-5 h-5 text-[#19D8F5]"></i>
+          <h2 class="text-2xl font-bold text-white uppercase tracking-wider">10. Market Opportunity & Gap Analysis</h2>
+        </div>
+
+        <div class="p-6 sm:p-8 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+            <div class="p-5 rounded-xl bg-[#080F23] border border-slate-800 space-y-2">
+              <span class="text-[10px] font-mono uppercase text-[#19D8F5] font-bold">CURRENT STATE</span>
+              <h3 class="text-sm font-bold text-white">Basic Systems & Manual Processes</h3>
+              <p class="text-xs text-slate-400">Paper ledgers, fixed tariffs, manual OTA extranets.</p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-[#080F23] border border-[#19D8F5]/30 space-y-2">
+              <span class="text-[10px] font-mono uppercase text-[#19D8F5] font-bold">THE GAP</span>
+              <h3 class="text-sm font-bold text-white">Revenue Intelligence & Yield Control</h3>
+              <p class="text-xs text-slate-300">Lack of demand forecasting, RevPAR tracking, and profit visibility.</p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-gradient-to-r from-[#19D8F5]/10 to-[#22C7F5]/10 border border-[#19D8F5] space-y-2">
+              <span class="text-[10px] font-mono uppercase text-[#19D8F5] font-bold">REVORA HYPOTHESIS</span>
+              <h3 class="text-sm font-bold text-white">Practical AI Decision Support</h3>
+              <p class="text-xs text-slate-200">Affordable, non-intrusive revenue analytics layer for small/mid hotels.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. FROM RESEARCH TO REVORA (MAPPING) -->
+      <section id="report-mapping" class="p-8 rounded-3xl bg-[#0D162D] border border-[#19D8F5]/30 space-y-6 text-center">
+        <div class="text-xs font-bold text-[#19D8F5] uppercase tracking-widest">PRODUCT MAPPING</div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">11. From Research Findings to Revora Features</h2>
+
+        <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Ground-truth research directly shaped Revora's core product capabilities — providing actionable revenue guidance without requiring enterprise infrastructure.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-left max-w-4xl mx-auto pt-2">
+          <div class="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div class="text-xs font-bold text-white">Limited Revenue Visibility</div>
+            <span class="text-[10px] text-slate-400 block pt-1">→ Revora Performance Dashboard</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div class="text-xs font-bold text-white">Fixed Seasonal Tariffs</div>
+            <span class="text-[10px] text-slate-400 block pt-1">→ Revora Pricing Intelligence</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div class="text-xs font-bold text-white">Unpredictable Lead Times</div>
+            <span class="text-[10px] text-slate-400 block pt-1">→ Revora Demand Forecasting</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div class="text-xs font-bold text-white">Low AI Tool Usage</div>
+            <span class="text-[10px] text-slate-400 block pt-1">→ Revora AI Revenue Analytics</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div class="text-xs font-bold text-white">High OTA Commission Drain</div>
+            <span class="text-[10px] text-slate-400 block pt-1">→ Revora Profitability Insights</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[#080F23] border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono text-[#19D8F5] uppercase font-bold">Research Finding</span>
+            <div class="text-xs font-bold text-white">Intuition-Based Rate Changes</div>
+            <span class="text-[10px] text-slate-400 block pt-1">→ Revora Revenue Simulation</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. GLOSSARY OF HOSPITALITY TERMS -->
+      <section id="report-glossary" class="p-6 rounded-2xl bg-[#0D162D] border border-slate-800 space-y-4">
+        <div class="flex items-center gap-2 text-xs font-bold text-white uppercase tracking-wider border-b border-slate-800 pb-2">
+          <i data-lucide="book-marked" class="w-4 h-4 text-[#19D8F5]"></i> 12. Glossary of Hotel Technology Terms
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-xs text-slate-300">
+          <div class="p-3 rounded-lg bg-[#080F23] border border-slate-800">
+            <strong class="text-white block">PMS (Property Management System):</strong> Software managing front-desk check-ins, guest billing, and room status.
+          </div>
+          <div class="p-3 rounded-lg bg-[#080F23] border border-slate-800">
+            <strong class="text-white block">OTA (Online Travel Agency):</strong> Third-party booking engines like MakeMyTrip, Goibibo, and Booking.com.
+          </div>
+          <div class="p-3 rounded-lg bg-[#080F23] border border-slate-800">
+            <strong class="text-white block">RMS (Revenue Management System):</strong> Algorithmic software optimizing room rate tariffs and inventory yield.
+          </div>
+          <div class="p-3 rounded-lg bg-[#080F23] border border-slate-800">
+            <strong class="text-white block">ADR (Average Daily Rate):</strong> Average room revenue earned per occupied room.
+          </div>
+          <div class="p-3 rounded-lg bg-[#080F23] border border-slate-800">
+            <strong class="text-white block">RevPAR (Revenue Per Available Room):</strong> Total room revenue divided by total available rooms.
+          </div>
+          <div class="p-3 rounded-lg bg-[#080F23] border border-slate-800">
+            <strong class="text-white block">GOPPAR (Gross Operating Profit Per Room):</strong> Net operating profit metric after operating expenses.
           </div>
         </div>
       </section>
